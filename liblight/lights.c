@@ -65,6 +65,9 @@ char const*const GREEN_BLINK_FILE
 char const*const BLUE_BLINK_FILE
         = "/sys/class/leds/blue/blink";
 
+char const*const LED_FILE
+        = "/proc/led_device";
+
 /**
  * device methods
  */
@@ -122,6 +125,7 @@ set_light_backlight(struct light_device_t* dev,
     }
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
+    write_int(LED_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
