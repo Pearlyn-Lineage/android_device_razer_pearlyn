@@ -122,6 +122,9 @@ BOARD_HAVE_CAMERA := false
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # SELinux
  -include device/qcom/sepolicy/sepolicy.mk
  
