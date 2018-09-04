@@ -105,10 +105,6 @@ vendor/lib/libscale.so
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# Listen service
-vendor/lib/liblistenjni.so
-vendor/lib/liblistensoundmodel2.so
-
 # Media
 lib/libdashplayer.so
 lib/libdivxdrmdecrypt.so
@@ -273,50 +269,6 @@ etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
-# Radio
-bin/cnd
-bin/dpmd
-bin/efsks
-bin/ks
-bin/mdm_helper
-bin/mdm_helper_proxy
-bin/netmgrd
-bin/port-bridge
-bin/qcks
-bin/qmuxd
-bin/radish
-bin/ssr_diag
-bin/subsystem_ramdump
-framework/cneapiclient.jar
-framework/com.qti.dpmframework.jar
-framework/com.quicinc.cne.jar
-framework/ConnectivityExt.jar
-framework/dpmapi.jar
-framework/tcmclient.jar
-vendor/lib/libcne.so
-vendor/lib/libcneapiclient.so
-vendor/lib/libcneconn.so
-vendor/lib/libcneqmiutils.so
-vendor/lib/libCommandSvc.so
-vendor/lib/libconfigdb.so
-vendor/lib/libconnctrl.so
-vendor/lib/libdpmctmgr.so
-vendor/lib/libdpmfdmgr.so
-vendor/lib/libdpmframework.so
-vendor/lib/libdpmnsrm.so
-vendor/lib/libdpmtcm.so
-vendor/lib/libmdmdetect.so
-vendor/lib/libnetmgr.so
-vendor/lib/libNimsWrap.so
-vendor/lib/libQtiTether.so
-vendor/lib/libSubSystemShutdown.so
-vendor/lib/libsubsystem_control.so
-vendor/lib/libvendorconn.so
-vendor/lib/libvoice-svc.so
-vendor/lib/libwms.so
-vendor/lib/libwqe.so
-vendor/lib/libxml.so
-
 # Media
 framework/qcmediaplayer.jar
 lib/libextmedia_jni.so
@@ -325,7 +277,6 @@ lib/libqcmediaplayer.so
 # Misc files
 bin/ATFWD-daemon
 bin/athdiag
-bin/dun-server
 bin/ethtool
 bin/ftmdaemon
 bin/hal_proxy_daemon
