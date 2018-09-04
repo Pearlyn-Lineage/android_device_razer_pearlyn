@@ -143,7 +143,7 @@ WITH_LZMA_OTA:= true
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 LZMA_RAMDISK_TARGETS := recovery
 
 # TWRP (optional)
