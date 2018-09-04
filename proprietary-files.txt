@@ -52,11 +52,11 @@ etc/firmware/rampatch_tlv_3.0.tlv
 bin/qseecomd
 bin/qseecom_sample_client
 vendor/lib/drm/libdrmprplugin.so
-vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/drm/libdrmwvmplugin.so|6bdcc4d59b07ccbdd7b07a99677406ade3d2e232
 vendor/lib/lib-sec-disp.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/liboemcrypto.so
+vendor/lib/liboemcrypto.so|1c33ad8f051af4bb07059c1b87e7af9b3ef72636
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
@@ -70,7 +70,7 @@ vendor/lib/libtzplayready.so
 
 # Widevine
 vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
+vendor/lib/libwvm.so|763d5247d92fe5336c771887e71683b1a3584746
 vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
@@ -169,7 +169,7 @@ vendor/lib/libsmemlog.so
 vendor/lib/libsensor1.so
 
 # Time Services
--app/TimeService/TimeService.apk
+-app/TimeService/TimeService.apk|f6c898ec66b57ebfe891c9e3598f95234f205ca0
 -vendor/lib/libtime_genoff.so
 bin/time_daemon
 vendor/lib/libTimeService.so
