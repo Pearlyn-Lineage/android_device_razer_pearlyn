@@ -332,9 +332,6 @@ framework/qcmediaplayer.jar
 lib/libextmedia_jni.so
 lib/libqcmediaplayer.so
 
-# Audio Config
-vendor/etc/audio_effects.conf
-
 # qcom wifi display
 bin/wdsdaemon
 framework/WfdCommon.jar
