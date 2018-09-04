@@ -51,7 +51,6 @@ PRODUCT_PACKAGES += \
     init.qcom.factory.sh \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.ssr.sh \
     init.qcom.syspart_fixup.sh \
     init.razer.rc \
     init.target.rc \
