@@ -28,6 +28,7 @@
 import init.trace.rc
 import init.razer.usb.rc
 import init.target.rc 
+import init.qcom.power.rc
 
 on init
     # Set permissions for persist partition
