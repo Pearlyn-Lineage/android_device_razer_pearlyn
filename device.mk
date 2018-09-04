@@ -43,18 +43,10 @@ PRODUCT_COPY_FILES += \
 # Rootdir
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.class_main.sh \
-    init.mdm.sh \
-    init.qcom.class_core.sh \
-    init.pearlyn.diag.rc \
-    init.qcom.early_boot.sh \
-    init.qcom.factory.sh \
     init.qcom.rc \
-    init.qcom.sh \
-    init.qcom.syspart_fixup.sh \
     init.razer.rc \
-    init.target.rc \
     init.razer.usb.rc \
+    init.target.rc \
     init.recovery.qcom.rc \
     init.recovery.recovery.rc \
     init.trace.rc \
