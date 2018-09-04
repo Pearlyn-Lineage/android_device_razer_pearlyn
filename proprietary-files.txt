@@ -140,7 +140,7 @@ vendor/lib/libmm-abl.so
 
 # Power
 bin/mpdecision
-framework/QPerformance.jar
+-framework/QPerformance.jar
 lib/libqti_performance.so
 vendor/bin/thermal-engine
 vendor/lib/libqc-opt.so
@@ -169,8 +169,8 @@ vendor/lib/libsmemlog.so
 vendor/lib/libsensor1.so
 
 # Time Services
-app/TimeService/TimeService.apk
-vendor/lib/libtime_genoff.so
+-app/TimeService/TimeService.apk
+-vendor/lib/libtime_genoff.so
 bin/time_daemon
 vendor/lib/libTimeService.so
 
@@ -270,7 +270,7 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # Media
-framework/qcmediaplayer.jar
+-framework/qcmediaplayer.jar
 lib/libextmedia_jni.so
 lib/libqcmediaplayer.so
 
@@ -290,7 +290,7 @@ bin/pktlogconf
 bin/PktRspTest
 bin/ptt_socket_app
 bin/test_diag
-framework/oem-services.jar
+-framework/oem-services.jar
 lib/libantradio.so
 lib/libgoogle_tagger_aah_jni.so
 vendor/lib/libuhid.so
