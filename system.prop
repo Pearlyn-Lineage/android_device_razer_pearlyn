@@ -7,6 +7,9 @@ persist.demo.hdmirotationlock=false
 # Model Group
 ro.nrdp.modelgroup=FORGETV
 
+# No Telephony
+ro.radio.noril=yes
+
 # Bluetooth
 ro.bluetooth.hfp.ver=1.6
 ro.qualcomm.bluetooth.opp=true
