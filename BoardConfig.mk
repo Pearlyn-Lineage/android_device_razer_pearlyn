@@ -148,5 +148,5 @@ LZMA_RAMDISK_TARGETS := recovery
 
 # TWRP (optional)
 ifeq ($(WITH_TWRP),true)
- -include device/razer/pearlyn/twrp.mk
+ -include device/razer/pearlyn/twrp/twrp.mk
 endif
