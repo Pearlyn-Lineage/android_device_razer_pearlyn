@@ -44,8 +44,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
-    init.razer.rc \
-    init.razer.usb.rc \
+    init.qcom.usb.rc \
     init.target.rc \
     init.recovery.qcom.rc \
     init.recovery.recovery.rc \

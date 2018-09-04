@@ -26,7 +26,7 @@
 #
 
 import init.trace.rc
-import init.razer.usb.rc
+import init.qcom.usb.rc
 import init.target.rc 
 import init.qcom.power.rc
 
@@ -42,6 +42,10 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
+
+on fs
+    # Set a default date
+    start razerdate
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -84,6 +88,8 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+    write /proc/rzr_filter 0
 
 # update foreground cpuset now that processors are up
      write /dev/cpuset/foreground/cpus 0-3
@@ -794,6 +800,18 @@ service diag_mdlog_stop /system/bin/diag_mdlog -k
     group system diag sdcard_rw sdcard_r media_rw
     disabled
     oneshot
+
+service razerdate /system/bin/date -s 20150101
+   oneshot
+   disabled
+
+on property:persist.sys.rzr.device_mode=0
+	write /proc/usb_device 0
+	start adbd
+
+on property:persist.sys.rzr.device_mode=1
+	write /proc/usb_device 1
+	stop adbd
 
 service qlogd /system/xbin/qlogd
     class main
