@@ -27,8 +27,28 @@
 
 import init.trace.rc
 import init.qcom.usb.rc
-import init.target.rc 
 import init.qcom.power.rc
+
+on early-init
+    mkdir /firmware 0771 system system
+    mkdir /firmware/image 0771 system system
+    
+    # Keymaster Fix
+    symlink /system/vendor/firmware/keymaster/keymaster.b00 /firmware/image/keymaster.b00
+    symlink /system/vendor/firmware/keymaster/keymaster.b01 /firmware/image/keymaster.b01
+    symlink /system/vendor/firmware/keymaster/keymaster.b02 /firmware/image/keymaster.b02
+    symlink /system/vendor/firmware/keymaster/keymaster.b03 /firmware/image/keymaster.b03
+    symlink /system/vendor/firmware/keymaster/keymaster.mdt /firmware/image/keymaster.mdt
+    
+    # Widevine Fix
+    symlink /system/vendor/firmware/widevine.b00 /firmware/image/widevine.b00
+    symlink /system/vendor/firmware/widevine.b01 /firmware/image/widevine.b01
+    symlink /system/vendor/firmware/widevine.b02 /firmware/image/widevine.b02
+    symlink /system/vendor/firmware/widevine.b03 /firmware/image/widevine.b03
+    symlink /system/vendor/firmware/widevine.mbn /firmware/image/widevine.mbn
+    symlink /system/vendor/firmware/widevine.mdt /firmware/image/widevine.mdt
+    
+    symlink /data/tombstones /tombstones
 
 on init
     # Set permissions for persist partition
@@ -43,7 +63,46 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    chown system graphics /sys/class/graphics/fb0/cec/enable
+    chmod 0664 /sys/class/graphics/fb0/cec/enable
+    chown system graphics /sys/class/graphics/fb0/cec/logical_addr
+    chmod 0664 /sys/class/graphics/fb0/cec/logical_addr
+    chown system graphics /sys/class/graphics/fb0/cec/rd_msg
+    chmod 0664 /sys/class/graphics/fb0/cec/rd_msg
+    chown system graphics /sys/class/graphics/fb0/cec/wr_msg
+    chmod 0600 /sys/class/graphics/fb0/cec/wr_msg
+    chown system graphics /sys/class/graphics/fb0/cec/enable
+    chmod 0664 /sys/class/graphics/fb0/cec/enable
+    chown system graphics /sys/class/graphics/fb0/hpd
+    chmod 0664 /sys/class/graphics/fb0/hpd
+    chown system graphics /sys/class/graphics/fb0/vendor_name
+    chmod 0664 /sys/class/graphics/fb0/vendor_name
+    chown system graphics /sys/class/graphics/fb0/product_description
+    chmod 0664 /sys/class/graphics/fb0/product_description
+    chown system graphics /sys/class/graphics/fb0/hdcp/tp
+    chmod 0664 /sys/class/graphics/fb0/hdcp/tp
+    chown system graphics /sys/class/graphics/fb0/video_mode
+    chmod 0664 /sys/class/graphics/fb0/video_mode
+    chown system graphics /sys/class/graphics/fb0/pa
+    chmod 0664 /sys/class/graphics/fb0/pa
+
 on fs
+    wait /dev/block/bootdevice
+    mount_all fstab.qcom
+	swapon_all fstab.qcom
+
+    restorecon_recursive /persist
+    mkdir /persist/data 0700 system system
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
+
+    #readable symlinks for video nodes
+    mkdir /dev/video
+    symlink /dev/video32 /dev/video/venus_dec
+    symlink /dev/video33 /dev/video/venus_enc
+
+    setprop ro.crypto.fuse_sdcard true
+
     # Set a default date
     start razerdate
 
@@ -277,6 +336,12 @@ on post-fs-data
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
+
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
@@ -800,6 +865,35 @@ service diag_mdlog_stop /system/bin/diag_mdlog -k
     group system diag sdcard_rw sdcard_r media_rw
     disabled
     oneshot
+
+service qseecomd /system/bin/qseecomd
+   class core
+   user root
+   group root
+
+service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
+   class main
+   user root
+   group root readproc
+   disabled
+
+service thermal-engine /system/vendor/bin/thermal-engine
+   class main
+   user root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
+   group root
+
+service time_daemon /system/bin/time_daemon
+   class late_start
+   user root
+   group root
+
+service adsprpcd /system/bin/adsprpcd
+   class main
+   user media
+   group media
 
 service razerdate /system/bin/date -s 20150101
    oneshot
